@@ -1,0 +1,16 @@
+unstructured
+pymongo
+sentence-transformers
+pillow
+poppler-utils 
+numpy==1.26.4
+pdfminer
+pdfminer.six
+pillow_heif
+opencv-python
+opencv-python-headless 
+pdf2image
+openpyxl 
+unstructured_inference
+unstructured-client 
+unstructured.pytesseract
