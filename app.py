@@ -46,21 +46,21 @@ client[db_name][collection_name].delete_many({})
 
 # insert
 client[db_name][collection_name].insert_many(records)
-query = "What is about software engineering and agile methodlogy?"
+
+query = "Summarize about the term Personas in the document."
 
 vector_query = model.encode(query).tolist()
-print("The vector query==", vector_query)
-print("\n")
+# print("The vector query==", vector_query)
+# print("\n")
 
 pipeline = [
     {
-        "$search": {
-            "index": "default",
-            "knnBeta": {
-                "vector": vector_query,
-                "path": "embedding",
-                "k": 5,
-            }
+        "$vectorSearch": {
+            "index": "vector_index_new",
+            "path": "embedding",
+            "queryVector": vector_query,
+            "numCandidates": 100,
+            "limit": 10
         }
     },
     {
@@ -74,7 +74,12 @@ pipeline = [
     }
 ]
 
+print("The pipeline==", pipeline)
+print("\n")
+print(client[db_name][collection_name].aggregate(pipeline))
+
 results = list(client[db_name][collection_name].aggregate(pipeline))
+print("Results====", results)
 
 context = json.dumps(results)
 
