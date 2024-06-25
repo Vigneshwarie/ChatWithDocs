@@ -5,12 +5,15 @@ from sentence_transformers import SentenceTransformer
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from dotenv import load_dotenv
+import openai
+import json
 
 load_dotenv()
 CONNECTION_STRING = os.getenv("MONGODB_CONNECTION_STRING")
 DB_NAME = os.getenv("MONGODB_DB_NAME")
 COLLECTION_NAME = os.getenv("MONGODB_COLLECTION_NAME")
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 uri = CONNECTION_STRING
 db_name = DB_NAME
@@ -72,3 +75,18 @@ pipeline = [
 ]
 
 results = list(client[db_name][collection_name].aggregate(pipeline))
+
+context = json.dumps(results)
+
+response = openai.chat.completions.create(
+    model="gpt-4o",
+    messages=[
+        {"role": "system", "content": "You are a useful assistant. Use the assistant's content to answer the user's query \
+        Summarize your answer using the 'texts' and cite the 'page_number' and 'filename' metadata in your reply."},
+        {"role": "assistant", "content": context},
+        {"role": "user", "content": query}
+    ]
+)
+
+print("\n")
+print("The response is==", response.choices[0].message.content)
