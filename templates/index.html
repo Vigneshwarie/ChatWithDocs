@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document Search</title>
+</head>
+<body>
+    <h1>Upload Document and Ask Questions</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="document">Upload PDF:</label>
+        <input type="file" name="document" id="document" accept=".pdf">
+        <button type="submit">Upload</button>
+    </form>
+    <hr>
+    <form action="/query" method="post">
+        <label for="query">Enter your question:</label>
+        <input type="text" name="query" id="query" required>
+        <button type="submit">Ask</button>
+    </form>
+    {% if query %}
+        <hr>
+        <h2>Query: {{ query }}</h2>
+        <h3>Answer:</h3>
+        <p>{{ answer }}</p>
+    {% endif %}
+</body>
+</html>

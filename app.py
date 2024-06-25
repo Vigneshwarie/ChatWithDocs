@@ -47,7 +47,7 @@ client[db_name][collection_name].delete_many({})
 # insert
 client[db_name][collection_name].insert_many(records)
 
-query = "Summarize about the term Personas in the document."
+query = "Summarize about the document."
 
 vector_query = model.encode(query).tolist()
 # print("The vector query==", vector_query)
@@ -60,7 +60,7 @@ pipeline = [
             "path": "embedding",
             "queryVector": vector_query,
             "numCandidates": 100,
-            "limit": 10
+            "limit": 20
         }
     },
     {
