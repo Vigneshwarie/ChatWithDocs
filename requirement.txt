@@ -14,3 +14,4 @@ openpyxl
 unstructured_inference
 unstructured-client 
 unstructured.pytesseract
+python-dotenv
