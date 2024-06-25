@@ -42,7 +42,9 @@ pip install -r requirements.txt
 Create a .env file in the root directory of your project and add your OpenAI API key and MongoDB URI:    
 ```
 OPENAI_API_KEY=your_openai_api_key
-MONGODB_URI=your_mongodb_uri
+MONGODB_CONNECTION_STRING=your_mongodb_uri
+MONGODB_DB_NAME=your_mongodb_db_name
+MONGODB_COLLECTION_NAME=your_mongodb_collection_name
 ```
 ### Run the Application
 Start the application:    
