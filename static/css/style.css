@@ -1,0 +1,28 @@
+.row .form-label {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.btn.btn-primary {
+    background-color: #66DBF4;
+    color: #000;
+    font-weight: bold;
+    border-color: #66DBF4;
+}
+
+body {
+    background-color: #000;
+    color:#fff;
+}
+
+.container-fluid {
+    margin-top: 10px;
+}
+
+.row {
+    margin-top: 20px;
+}
+
+.container-fluid .textgreen {
+    color: #6CE975;
+}
