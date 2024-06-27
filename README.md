@@ -15,6 +15,9 @@ ChatWithDocs is an app that chunks documents, stores them in MongoDB, and enable
 **MongoDB:** A NoSQL database for storing document chunks.   
 **OpenAI:** Provides the language model for conversational interactions.   
 
+## Architecture
+![alt text](static/images/ChatWithDocs-Architecture.png)
+
 ## Installation
 ### Prerequisites
 Before you begin, ensure you have met the following requirements:   
